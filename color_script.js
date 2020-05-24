@@ -1,32 +1,13 @@
-var colors= [
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 0, 255)"
-]
-
+var colors= generateRandomColors(6);
 var squares = document.querySelectorAll(".square");
 
-var pickedColor=colors[pickColor()];
+var pickedColor=colors[pickColor(colors.length)];
 var colorDisplay=document.getElementById("ColorDisplay");
 var messageDisplay=document.getElementById("message");
+var h1=document.querySelector("h1");
+
 colorDisplay.textContent = pickedColor;
 
-function changeColors(color){
-    //loop through all squares
-    for(var i = 0;i < squares.length;i++){
-        squares[i].style.background=color;
-    }
-    //change each color to match given color
-
-}
-
-function pickColor(){
-   return Math.floor(Math.random() * colors.length);
-
-}
 
 for(var i=0;i < squares.length;i++){
     //add initial colors to squares
@@ -40,6 +21,7 @@ for(var i=0;i < squares.length;i++){
         if(clickedColor === pickedColor){
             messageDisplay.textContent="Correct";
             changeColors(clickedColor);
+            h1.style.background= clickedColor;
         }else{
            this.style.backgroundColor= "#232323";
            messageDisplay.textContent="try again";
@@ -48,3 +30,39 @@ for(var i=0;i < squares.length;i++){
     });
 }
 
+
+function changeColors(color){
+    //loop through all squares
+    for(var i = 0;i < squares.length;i++){
+        squares[i].style.background=color;
+    }
+    //change each color to match given color
+
+}
+
+function pickColor(num){
+   return Math.floor(Math.random() * num);
+
+}
+
+function generateRandomColors(num){
+    //make an array
+    var arr=[];
+    //generate random colors in array
+    for(var i=0;i < num;i++){
+        //get random color and push into array
+        arr.push(RandomColors());
+    }
+    //return array
+    return arr;
+}
+
+function RandomColors(){
+    //pick a red from 0 - 255
+    var r=pickColor(256);
+    //pick a green from 0 - 255
+    var g=pickColor(256);
+    //pick a blue from 0 - 255
+    var b=pickColor(256);
+    return "rgb(" + r +", " + g +", " + b + ")" ;
+}
