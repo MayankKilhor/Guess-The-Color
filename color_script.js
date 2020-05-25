@@ -1,17 +1,54 @@
-var colors= generateRandomColors(6);
-var squares = document.querySelectorAll(".square");
 
+var numberofSquares=6;
+var colors= generateRandomColors(numberofSquares);
+var squares = document.querySelectorAll(".square");
 var pickedColor=colors[pickColor(colors.length)];
 var colorDisplay=document.getElementById("ColorDisplay");
 var messageDisplay=document.getElementById("message");
 var h1=document.querySelector("h1");
 var resetButton=document.querySelector("#reset");
+var easyBtn=document.querySelector("#easyBtn");
+var hardBtn=document.querySelector("#hardBtn");
+
+
+colorDisplay.textContent = pickedColor;
+
+easyBtn.addEventListener("click",function(){
+    easyBtn.classList.add("selected");
+    hardBtn.classList.remove("selected");
+    numberofSquares=3;
+    colors= generateRandomColors(numberofSquares);
+    pickedColor=colors[pickColor(colors.length)];
+    colorDisplay.textContent = pickedColor;
+    h1.style.background= "#232323";
+    for(var i=0;i<squares.length;i++){
+        if(colors[i]){
+            squares[i].style.background=colors[i];
+        }else{
+            squares[i].style.display="none";
+        }
+    }
+});
+
+hardBtn.addEventListener("click",function(){
+    hardBtn.classList.add("selected");
+    easyBtn.classList.remove("selected");
+    numberofSquares=6;
+    colors= generateRandomColors(numberofSquares);
+    pickedColor=colors[pickColor(colors.length)];
+    colorDisplay.textContent = pickedColor;
+    h1.style.background= "#232323";
+    for(var i=0;i<squares.length;i++){
+        squares[i].style.background=colors[i];
+        squares[i].style.display="block";
+    }
+});
 
 resetButton.addEventListener("click",function(){
     //change textcontent again to New Colors
     resetButton.textContent="New Colors";
     //generate all colours
-    colors= generateRandomColors(6);
+    colors= generateRandomColors(numberofSquares);
     //pick a new random colors from array
     pickedColor=colors[pickColor(colors.length)];
     //change color display to match picked color
@@ -24,7 +61,7 @@ resetButton.addEventListener("click",function(){
     h1.style.background= "#232323";
 });
 
-colorDisplay.textContent = pickedColor;
+
 
 
 for(var i=0;i < squares.length;i++){
