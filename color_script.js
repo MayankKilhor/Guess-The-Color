@@ -59,6 +59,7 @@ resetButton.addEventListener("click",function(){
     }
     //change background back to black
     h1.style.background= "steelblue";
+    messageDisplay.textContent="";
 });
 
 
