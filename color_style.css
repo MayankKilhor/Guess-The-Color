@@ -1,5 +1,7 @@
 body{
     background-color: #232323;
+    margin:0;
+    font-family: "Montserrat","Avenir";
 }
 
 .square{
@@ -12,12 +14,23 @@ body{
 
 #container{
     max-width:600px;
+    
 }
  
 h1{
+    text-align: center;
     color:white;
+    line-height: 1.1    ;
+    font-weight: normal;
+    background: steelblue;
+    margin:0;
+    text-transform: uppercase;
+    padding: 20px 0;
 }
 
+#ColorDisplay{
+    font-size: 200%;
+}
 
 #stripe{
     background-color: white;
