@@ -63,7 +63,7 @@ resetButton.addEventListener("click",function(){
 });
 
 
-
+document.get
 
 for(var i=0;i < squares.length;i++){
     //add initial colors to squares
@@ -123,3 +123,14 @@ function RandomColors(){
     var b=pickColor(256);
     return "rgb(" + r +", " + g +", " + b + ")" ;
 }
+
+$(document).ready(function(){
+    $("#hardBtn").hover(function(){
+      //mouseover
+      $(this).prev().find('#easyBtn').addClass('transform');
+    },function(){
+      //mouseout
+      $(this).prev().find('#easyBtn').removeClass('transform');
+    })
+  })
+ 
