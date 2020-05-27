@@ -46,7 +46,7 @@ button{
     outline: none;
 }
 
-#ColorDisplay{
+#colorDisplay{
     font-size: 200%;
 }
 
@@ -77,7 +77,7 @@ button:hover{
      color:steelblue;
 }
 
-img.transform{
+#easyBtn:hover ~ #hardBtn {
     background-color: white;
     color:steelblue;
 }
